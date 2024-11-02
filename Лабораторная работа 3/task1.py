@@ -1,22 +1,24 @@
-# TODO Напишите функцию find_common_participants
+# TODO Напишите функцию для поиска индекса товара
 
-def find_common_participants(str1, str2, razdelitl=","):
-    new_str1 = str1.split(razdelitl)
-    new_str2 = str2.split(razdelitl)
+def poisk(list_, product):
+    flag = 0
+    for i in range(len(list_)):
+        if list_[i] == product:
+            flag = 1
+            ind = i
+            break
+    if flag == 0:
+        return None
+    else:
+        return ind
 
-    set1 = set(new_str1)
-    set2 = set(new_str2)
+items_list = ['яблоко', 'банан', 'апельсин', 'груша', 'киви', 'банан']
 
-    intersection_set = set1.intersection(set2)
+for find_item in ['банан', 'груша', 'персик']:
+    index_item = poisk(items_list, find_item)  # TODO Вызовите функцию, что получить индекс товара
+    if index_item is not None:
+        print(f"Первое вхождение товара '{find_item}' имеет индекс {index_item}.")
+    else:
+        print(f"Товар '{find_item}' не найден в списке.")
 
-    new_list = list(intersection_set)
 
-    return new_list
-
-
-participants_first_group = "Иванов|Петров|Сидоров"
-participants_second_group = "Петров|Сидоров|Смирнов"
-
-result = find_common_participants(participants_first_group, participants_second_group, '|')
-print(result)
-# TODO Проверьте работу функции с разделителем отличным от запятой
